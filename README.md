@@ -7,4 +7,4 @@ This project is a game that lets a player guess a random number between 1-100 wi
 Project is created with Javascript
 
 ## Deployment
-<!-- Go to [https://jchen2190@github.io/NumberGuess](https://jchen2190.github.io/NumberGuess/) -->
+Go to [https://jchen2190@github.io/NumberGuess](https://jchen2190.github.io/NumberGuess/)
