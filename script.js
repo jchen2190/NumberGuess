@@ -20,7 +20,7 @@ const guessAvgSpan = document.getElementById('guess-avg-span');
 
 function playGame() {
     randNum = Math.ceil(Math.random()*100); // 1-100
-    console.log('randNum', randNum);
+    // console.log('randNum', randNum);
     this.style.display = "none"; // hide the PLAY button
     guessBox.style.display = "inline"; // show the GUESS button
     guessBtn.style.display = "inline";
@@ -44,28 +44,12 @@ function evalGuess() {
     }
 
     if(guessesLeft == 0) { // game over
-        feedback.textContent = `You are out of guesses! GAME OVER!`
-        gameOver();
+        feedbackH2.textContent = `You are out of guesses! Try Again!`
+       resetGame();
     }
 }
 
 function resetGame() {
-    playerGuess = 0;
-    guessesLeft = 7;
-    guessBox.value = 0;
-    guessBox.style.display = "none"; // show the GUESS button
-    guessBtn.style.display = "none";
-    playBtn.style.display = "inline-block";
-    playBtn.textContent = "PLAY AGAIN";
-    // update footer (Games Played and Guess Average)
-    gamesPlayed++;
-    guessAvg = totalGuesses / gamesPlayed;
-    // output (Games Played and Guess Average) to footer
-    totGamesSpan.textContent = gamesPlayed;
-    guessAvgSpan.textContent = guessAvg.toFixed(2);
-}
-
-function gameOver() {
     playerGuess = 0;
     guessesLeft = 7;
     guessBox.value = 0;
