@@ -9,7 +9,8 @@ const riddles = [
     { riddle: "What gets wet while drying?", answer: "towel" },
     { riddle: "What can’t talk but will reply when spoken to?", answer: "bank" },
     { riddle: "I have branches, but no fruit, trunk or leaves. What am I?", answer: "echo" },
-    
+    { riddle: "The more of this there is, the less you see. What is it?", answer: "Darkness" },
+
     // { riddle: "What month of the year has 28 days?", answer: "all", answer2: "every month" },
     // { riddle: "What can you keep after giving to someone?", answer: "word", answer2: "your word" },
 ];

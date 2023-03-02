@@ -1,7 +1,7 @@
 # NumberGuess
 
 ## General Info
-This project is a game that lets a player guess a random number between 1-100 within 7 guesses. A feedback will remark if the player is too low or too high relative to the random number. A tally is made to keep track on how many guesses was used each game.
+This project is a word riddle game that users have to deduct what the correct answer is from the riddle game. A feedback will remark if the player correct or wrong. A tally is made to keep track on how many riddles was guessed correctly and the average guesses the user took.
 
 ## Technologies
 Project is created with Javascript

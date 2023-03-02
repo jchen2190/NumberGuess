@@ -1,97 +1,52 @@
-/* body {
-    background-image: url("img/question-mark.jpg");
-    background-size: 100%;
+body {
+    box-sizing: border-box;
+    /* background-image: url("img/question-mark.jpg"); */
+    /* background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    background-color: #cc5500;
+    background-size: contain; */
     font-family: sans-serif;
-    line-height: 2em;
-    font-size: 0.9em;
-    color: #111;
-    margin:0;
+    margin: 0;
 }
 
 .container {
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 80px;
+    display: block;
+    justify-content: center;
     text-align: center;
-    min-height: 60vh;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
+    max-width: 100%;
+    /* backdrop-filter: blur(10px); */
 }
 
 h1 {
-    display: flex;
-    justify-content: center;
-    color: black;
-    background-color: #fff;
-    border-radius: 50px;
-    padding: 20px;
-    border: 5px solid coral;
-    width: 70%;
-    margin: 0 auto;
+
 }
 
 h2 {
-    font-size: 1.5em;
-    font-family: sans-serif;
-    line-height: 2em;
-    background-color: #fff;
-    padding: 10px;
-    width: 170px;
-    text-align: center;
-    margin: 0 auto;
-    border: 3px solid #555;
+
 }
 
 input, button {
-    padding: 15px;
-    margin: 15px;
-    font-size: 1.5em;
-    width: 150px;
-    color: #333;
-    text-align: center;
-    font-weight: bold;
-    border: 3px solid #555;
-    display: inline-block;
 }
 
 input {
-    width: 120px;
     display: none;
 }
 
 button {
     cursor: pointer;
-    color: #fff;
-    background-color: #cc5500;
-    /* border-radius: 20px; */
-/* }
+
+}
 
 #guess-btn {
+    display: none;
+}
+#skip-btn {
     display: none;
 }
 
 #feedback {
     display: none;
-    width: 90%;
-    border-radius: 20px;
 }
 
 #score-box {
-    background-color: #cc5500;
-    margin:0;
-    padding: 10px;
-    text-align: center;
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
 }
-
-#score-box {
-    display: flex;
-    justify-content: space-around;
-    opacity: 0;
-}  */
