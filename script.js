@@ -1,59 +1,85 @@
-let randNum = 0
-let playerGuess = 0
-let guessesLeft = 7;
+let playerGuess = ""
+let riddlesComplete = 0;
 let gamesPlayed = 0
 let guessAvg = 0
 let totalGuesses = 0;
 
-const playBtn = document.getElementById('play-btn');
 const guessBtn = document.getElementById('guess-btn');
-playBtn.addEventListener('click', playGame);
+const skipBtn = document.getElementById('skip-btn');
+const playBtn = document.getElementById('play-btn');
+skipBtn.addEventListener('click', skipGame);
 guessBtn.addEventListener('click', evalGuess);
+playBtn.addEventListener('click', playGame);
 
-let guessBox = document.querySelector('input');
-
-const feedbackH2 = document.getElementById('feedback');
+let input = document.querySelector('input');
+const currentRiddle = document.getElementById('riddle');
+const feedback = document.getElementById('feedback');
 const totGamesSpan = document.getElementById('tot-games-span');
 const guessAvgSpan = document.getElementById('guess-avg-span');
 
-
-
 function playGame() {
-    randNum = Math.ceil(Math.random()*100); // 1-100
-    // console.log('randNum', randNum);
-    this.style.display = "none"; // hide the PLAY button
-    guessBox.style.display = "inline"; // show the GUESS button
+    this.style.display = "none"; // hide the Play button
+    input.style.display = "block"; 
+    skipBtn.style.display = "inline";
     guessBtn.style.display = "inline";
-    feedbackH2.style.display = "inline-block";
-    feedbackH2.innerHTML = `Guess the mystery number from 1-100! <br>You have ${guessesLeft} guesses.`
+    feedback.style.display = "inline-block";
+
+    if(currentRiddle.textContent == "") {
+        startGame();
+    }
+    
 }
+
+const riddlesCopy = [...riddles];
+let matchRiddle = "";
+
+function startGame() {
+    // Fisher-Yates Shuffle
+    for (let i = 0; i < riddles.length; i++) {
+        let riddlesCopy = riddles[i];
+        let r = Math.floor(Math.random() * riddles.length);
+        riddles[i] = riddles[r];
+        riddles[r] = riddlesCopy;
+        // console.log('riddlesCopy', riddlesCopy);
+    }
+    console.log(riddles);
+    currentRiddle.textContent = riddles.pop().riddle;
+
+}   
+
+function skipGame() {
+
+}
+
+
 
 function evalGuess() {
-    totalGuesses++; // total guess +1
-    guessesLeft--; // -1 guess left
-    playerGuess = Number(guessBox.value); // get the player's guess (number)
-    // compare the player's guess to the mystery number
-    if (playerGuess < randNum) {
-        feedbackH2.innerHTML = `Your Guess is too LOW! <br/>You have ${guessesLeft} left!`;
-    } else if (playerGuess > randNum) {
-        feedbackH2.innerHTML = `Your Guess is too HIGH! <br/>You have ${guessesLeft} left!`;
-    } else {
-        feedbackH2.innerHTML = `Congrats! You guessed the mystery number: ${randNum}! <br/>You got it in ${7-guessesLeft} guesses!`;
-        // reset the game
-        resetGame();
-    }
+    totalGuesses++;
+    playerGuess = input.value;
+    console.log(playerGuess);
+    console.log(riddles);
 
-    if(guessesLeft == 0) { // game over
-        feedbackH2.textContent = `You are out of guesses! Try Again!`
-       resetGame();
+    if (playerGuess == riddles.answer) {
+        feedback.innerHTML = `You got it right! <br/>You guessed it in ${guesses} tries!`;
+        riddlesComplete++;
+
+        return resetGame();
+    } else {
+        feedback.innerHTML = `Your guess is incorrect. <br/>Try again!`;
     }
 }
+
+    // if(guesses == 0) { // game over
+    //     feedback.textContent = `You are out of guesses! Try Again!`
+    //    resetGame();
+    // }
+
 
 function resetGame() {
     playerGuess = 0;
-    guessesLeft = 7;
-    guessBox.value = 0;
-    guessBox.style.display = "none"; // show the GUESS button
+    guesses = 7;
+    input.value = 0;
+    input.style.display = "none"; // show the GUESS button
     guessBtn.style.display = "none";
     playBtn.style.display = "inline-block";
     playBtn.textContent = "PLAY AGAIN";
