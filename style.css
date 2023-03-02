@@ -1,4 +1,4 @@
-body {
+/* body {
     background-image: url("img/question-mark.jpg");
     background-size: 100%;
     background-position: center;
@@ -13,23 +13,22 @@ body {
 }
 
 .container {
-    width: 500px;
+    max-width: 500px;
     margin: 30px auto;
     padding: 80px;
-    /* background-repeat: no-repeat;
-    background-position: center top;
-    background-size: contain; */
     text-align: center;
     min-height: 60vh;
     border-radius: 10px;
-    /* background-color: rgba(61, 61, 61, 0.2); */
+    backdrop-filter: blur(10px);
 }
 
 h1 {
+    display: flex;
+    justify-content: center;
     color: black;
     background-color: #fff;
     border-radius: 50px;
-    padding: 20px 50px;
+    padding: 20px;
     border: 5px solid coral;
     width: 70%;
     margin: 0 auto;
@@ -69,7 +68,7 @@ button {
     color: #fff;
     background-color: #cc5500;
     /* border-radius: 20px; */
-}
+/* }
 
 #guess-btn {
     display: none;
@@ -94,5 +93,5 @@ button {
 #score-box {
     display: flex;
     justify-content: space-around;
-    /* opacity: 0; */
-}
+    opacity: 0;
+}  */
