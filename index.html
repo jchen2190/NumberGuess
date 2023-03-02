@@ -10,16 +10,19 @@
 <body>
     <div class="container">
 
-        <h1>Number Guessing Game</h1>
-        <input type="number" id="num" min="1" max="100">
-        <button id="play-btn">PLAY</button>
-        <button id="guess-btn">GUESS</button>
+        <h1>Word Riddles</h1>
         <h2 id="feedback">feedback..</h2>
+        <input type="text">
+        <button id="guess-btn">Guess</button>
+        <button id="skip-btn">Skip</button>
+        <button id="play-btn">Play</button>
     </div>
     <div id="score-box">
-        <p>Games Played: <span id="tot-games-span">0</span></p>
-        <p>Guess Average: <span id="guess-avg-span">0</span></p>
+        <p>Riddles Guessed: <span id="tot-riddles">0</span></p>
+        <p>Guess Average: <span id="guess-avg">0</span></p>
     </div>
+
+    <script src="riddles.js"></script>
     <script src="script.js"></script> 
 </body>
 </html>
