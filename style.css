@@ -43,9 +43,13 @@ button {
 #skip-btn {
     display: none;
 }
+#next-btn {
+    display: none;
+}
 #feedback {
     display: none;
 }
+
 
 #score-box {
 }

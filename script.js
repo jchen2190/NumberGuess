@@ -1,21 +1,22 @@
 let playerGuess = ""
 let riddlesComplete = 0;
-let gamesPlayed = 0
-let guessAvg = 0
-let totalGuesses = 0;
+let gamesPlayed = 1
+let guesses = 0;
 
 const guessBtn = document.getElementById('guess-btn');
 const skipBtn = document.getElementById('skip-btn');
 const playBtn = document.getElementById('play-btn');
+const nextBtn = document.getElementById('next-btn');
 skipBtn.addEventListener('click', skipGame);
 guessBtn.addEventListener('click', evalGuess);
 playBtn.addEventListener('click', playGame);
+nextBtn.addEventListener('click', nextRiddle);
 
 let input = document.querySelector('input');
 const currentRiddle = document.getElementById('riddle');
 const feedback = document.getElementById('feedback');
-const totGamesSpan = document.getElementById('tot-games-span');
-const guessAvgSpan = document.getElementById('guess-avg-span');
+const totRiddles = document.getElementById('tot-riddles');
+const guessAvg = document.getElementById('guess-avg');
 
 function playGame() {
     this.style.display = "none"; // hide the Play button
@@ -27,7 +28,6 @@ function playGame() {
     if(currentRiddle.textContent == "") {
         startGame();
     }
-    
 }
 
 const riddlesCopy = [...riddles];
@@ -40,40 +40,51 @@ function startGame() {
         let r = Math.floor(Math.random() * riddles.length);
         riddles[i] = riddles[r];
         riddles[r] = riddlesCopy;
-        // console.log('riddlesCopy', riddlesCopy);
     }
-    console.log(riddles);
-    currentRiddle.textContent = riddles.pop().riddle;
-
+    matchRiddle = riddles.pop();
+    currentRiddle.textContent = matchRiddle.riddle;
+    // console.log('matchRiddle', matchRiddle);
+    // console.log('riddles', riddles);
 }   
 
+function evalGuess() {
+    
+    playerGuess = input.value;
+    console.log('playerguess', playerGuess);
+    console.log('riddlesCopy', riddlesCopy);
+    console.log('matchriddle', matchRiddle);
+    console.log('riddles', riddles);
+    console.log('answer', riddles.answer);
+
+    for (let i = 0; i < riddlesCopy.length; i++) {
+        if (playerGuess.toLowerCase() == matchRiddle.answer) {
+            riddlesComplete++;
+            feedback.innerHTML = "You got it!";
+            guessBtn.style.display = "none";
+            skipBtn.style.display = "none";
+            nextBtn.style.display = "inline";
+        } else {
+            feedback.innerHTML = "Try again!";
+        }
+    }
+    if(riddles == "") {
+        feedback.innerHTML = "Congrats! You've finished all the riddles!"
+        nextBtn.style.display = "none"
+    }
+    guesses++;
+
+}
 function skipGame() {
 
 }
-
-
-
-function evalGuess() {
-    totalGuesses++;
-    playerGuess = input.value;
-    console.log(playerGuess);
-    console.log(riddles);
-
-    if (playerGuess == riddles.answer) {
-        feedback.innerHTML = `You got it right! <br/>You guessed it in ${guesses} tries!`;
-        riddlesComplete++;
-
-        return resetGame();
-    } else {
-        feedback.innerHTML = `Your guess is incorrect. <br/>Try again!`;
-    }
+function nextRiddle() {
+    matchRiddle = riddles.pop();
+    currentRiddle.textContent = matchRiddle.riddle;
+    guessBtn.style.display = "inline";
+    skipBtn.style.display = "inline";
+    nextBtn.style.display = "none";
+    feedback.innerHTML = "";
 }
-
-    // if(guesses == 0) { // game over
-    //     feedback.textContent = `You are out of guesses! Try Again!`
-    //    resetGame();
-    // }
-
 
 function resetGame() {
     playerGuess = 0;
