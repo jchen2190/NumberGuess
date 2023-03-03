@@ -50,14 +50,12 @@ function startGame() {
 function evalGuess() {
     
     playerGuess = input.value;
-    console.log('playerguess', playerGuess);
-    console.log('riddlesCopy', riddlesCopy);
     console.log('matchriddle', matchRiddle);
     console.log('riddles', riddles);
     console.log('answer', riddles.answer);
 
     for (let i = 0; i < riddlesCopy.length; i++) {
-        if (playerGuess.toLowerCase() == matchRiddle.answer) {
+        if (playerGuess.toLowerCase().includes(matchRiddle.answer)) {
             riddlesComplete++;
             feedback.innerHTML = "You got it!";
             guessBtn.style.display = "none";
@@ -75,8 +73,12 @@ function evalGuess() {
 
 }
 function skipGame() {
-
+    riddles.unshift(matchRiddle);
+    matchRiddle = riddles.pop();
+    currentRiddle.textContent = matchRiddle.riddle;
+    feedback.innerHTML = "";
 }
+
 function nextRiddle() {
     matchRiddle = riddles.pop();
     currentRiddle.textContent = matchRiddle.riddle;
