@@ -55,7 +55,7 @@ function evalGuess() {
     console.log('answer', riddles.answer);
 
     for (let i = 0; i < riddlesCopy.length; i++) {
-        if (playerGuess.toLowerCase().includes(matchRiddle.answer)) {
+        if (playerGuess.toLowerCase().includes(matchRiddle.answer) || playerGuess.toLowerCase() === matchRiddle.answer2) {
             riddlesComplete++;
             feedback.innerHTML = "You got it!";
             guessBtn.style.display = "none";

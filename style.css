@@ -20,17 +20,6 @@ body {
     /* backdrop-filter: blur(10px); */
 }
 
-h1 {
-
-}
-
-h2 {
-
-}
-
-input, button {
-}
-
 input {
     display: none;
     justify-content: center;
@@ -53,8 +42,4 @@ button {
 }
 #feedback {
     display: none;
-}
-
-
-#score-box {
 }
