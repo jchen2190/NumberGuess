@@ -11,7 +11,6 @@ body {
     font-family: sans-serif;
     margin: 0;
 }
-
 .container {
     display: block;
     justify-content: center;
@@ -19,18 +18,20 @@ body {
     max-width: 100%;
     /* backdrop-filter: blur(10px); */
 }
-
-input {
-    display: none;
+h2 {
+    display: block;
     justify-content: center;
     align-items: center;
 }
-
+#guessText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
 button {
     cursor: pointer;
-
 }
-
 #guess-btn {
     display: none;
 }
@@ -43,3 +44,18 @@ button {
 #feedback {
     display: none;
 }
+#score-box {
+    display: flex;
+    justify-content: space-evenly;
+}
+.shake {
+    animation: shake 0.3s;
+}
+@keyframes shake{
+    0%{ transform: translateX(0) }
+    20%{ transform: translateX(5px) }
+    40%{ transform: translateX(-5px); }
+    60%{ transform: translateX(5px); }
+    80%{ transform: translateX(-5px) }
+    100%{ transform: translateX(0px); }
+  }

@@ -30,6 +30,18 @@ function playGame() {
     }
 }
 
+// onkeyup="checkKey(event)"
+// enter keycode
+// function checkKey(e){
+//     let enterKey = 13;
+//     if (e.which == enterKey && guessBtn.style.display != "none"){
+//         evalGuess();
+//     }
+//     if (e.which == enterKey && nextBtn.style.display == "inline" && guessBtn.style.display == "none"){
+//         nextRiddle();
+//     }
+// }
+
 const riddlesCopy = [...riddles];
 let matchRiddle = "";
 
@@ -54,16 +66,20 @@ function evalGuess() {
     console.log('riddles', riddles);
     console.log('answer', riddles.answer);
 
-    for (let i = 0; i < riddlesCopy.length; i++) {
-        if (playerGuess.toLowerCase().includes(matchRiddle.answer) || playerGuess.toLowerCase() === matchRiddle.answer2) {
-            riddlesComplete++;
-            feedback.innerHTML = "You got it!";
-            guessBtn.style.display = "none";
-            skipBtn.style.display = "none";
-            nextBtn.style.display = "inline";
-        } else {
-            feedback.innerHTML = "Try again!";
-        }
+    if (playerGuess.toLowerCase().includes(matchRiddle.answer) || playerGuess.toLowerCase() === matchRiddle.answer2) {
+        riddlesComplete++;
+        feedback.innerHTML = "You got it!";
+        guessBtn.style.display = "none";
+        skipBtn.style.display = "none";
+        nextBtn.style.display = "inline";
+    } else {
+        feedback.innerHTML = "Try again!";
+        // input.classList.toggle("apply-shake");
+        input.classList.add("shake");
+        input.addEventListener("animationend", function() {
+            input.classList.remove("shake");
+        })
+
     }
     if(riddles == "") {
         feedback.innerHTML = "Congrats! You've finished all the riddles!"
