@@ -4,22 +4,21 @@
 }
 body {
     box-sizing: border-box;
-    /* background-image: url("images/question-mark.jpg"); */
-    /* background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain; */
-    display: block;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-column-gap: 30px;
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
     margin: 0;
+    padding-top: 30px;
 }
 .container {
     display: block;
     justify-content: center;
     text-align: center;
-    max-width: 100%;
+    align-self: flex-start;
+    flex: 3;
     /* backdrop-filter: blur(10px); */
 }
 h2 {
@@ -56,9 +55,10 @@ button {
 #feedback {
     display: none;
 }
-#score-box {
-    display: flex;
-    justify-content: space-evenly;
+#sidebar {
+    justify-content: flex-start;
+    align-self: flex-start;
+    padding-top: 30px;
 }
 .shake {
     animation: shake 0.3s;

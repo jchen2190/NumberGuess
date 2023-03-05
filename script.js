@@ -15,8 +15,10 @@ nextBtn.addEventListener('mouseup', nextRiddle);
 let input = document.querySelector('input');
 const currentRiddle = document.getElementById('riddle');
 const feedback = document.getElementById('feedback');
-const totRiddles = document.getElementById('tot-riddles');
+const userInputs = document.getElementById('user-inputs');
 const guessAvg = document.getElementById('guess-avg');
+
+
 
 function playGame() {
     this.style.display = "none"; // hide the Play button
@@ -59,9 +61,9 @@ function startGame() {
 function evalGuess() {
     
     playerGuess = input.value;
+    userInputs.innerHTML += `<br>` + `${input.value}`;
+    console.log('guesses', guesses);
     console.log('matchriddle', matchRiddle);
-    console.log('riddles', riddles);
-    console.log('answer', riddles.answer);
 
     if (playerGuess.toLowerCase().includes(matchRiddle.answer) || playerGuess.toLowerCase() === matchRiddle.answer2) {
         riddlesComplete++;
@@ -83,7 +85,7 @@ function evalGuess() {
         feedback.innerHTML = "Congrats! You've finished all the riddles!"
         nextBtn.style.display = "none"
     }
-    guesses++;
+    
 
 }
 function skipGame() {
@@ -93,6 +95,7 @@ function skipGame() {
     feedback.innerHTML = "";
     input.style.borderColor = "black";
     input.value = "";
+    userInputs.innerHTML = "";
 
 }
 
@@ -105,20 +108,21 @@ function nextRiddle() {
     feedback.innerHTML = "";
     input.style.borderColor = "black";
     input.value = "";
+    userInputs.innerHTML = "";
 }
 
-function resetGame() {
-    playerGuess = 0;
-    guesses = 7;
-    input.value = 0;
-    input.style.display = "none"; // show the GUESS button
-    guessBtn.style.display = "none";
-    playBtn.style.display = "inline-block";
-    playBtn.textContent = "PLAY AGAIN";
-    // update footer (Games Played and Guess Average)
-    gamesPlayed++;
-    guessAvg = totalGuesses / gamesPlayed;
-    // output (Games Played and Guess Average) to footer
-    totGamesSpan.textContent = gamesPlayed;
-    guessAvgSpan.textContent = guessAvg.toFixed(2);
-}
+// function resetGame() {
+//     playerGuess = 0;
+//     guesses = 7;
+//     input.value = 0;
+//     input.style.display = "none"; // show the GUESS button
+//     guessBtn.style.display = "none";
+//     playBtn.style.display = "inline-block";
+//     playBtn.textContent = "PLAY AGAIN";
+//     // update footer (Games Played and Guess Average)
+//     gamesPlayed++;
+//     guessAvg = totalGuesses / gamesPlayed;
+//     // output (Games Played and Guess Average) to footer
+//     totGamesSpan.textContent = gamesPlayed;
+//     guessAvgSpan.textContent = guessAvg.toFixed(2);
+// }
