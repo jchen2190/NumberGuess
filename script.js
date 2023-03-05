@@ -7,10 +7,10 @@ const guessBtn = document.getElementById('guess-btn');
 const skipBtn = document.getElementById('skip-btn');
 const playBtn = document.getElementById('play-btn');
 const nextBtn = document.getElementById('next-btn');
-skipBtn.addEventListener('click', skipGame);
-guessBtn.addEventListener('click', evalGuess);
-playBtn.addEventListener('click', playGame);
-nextBtn.addEventListener('click', nextRiddle);
+skipBtn.addEventListener('mouseup', skipGame);
+guessBtn.addEventListener('mouseup', evalGuess);
+playBtn.addEventListener('mouseup', playGame);
+nextBtn.addEventListener('mouseup', nextRiddle);
 
 let input = document.querySelector('input');
 const currentRiddle = document.getElementById('riddle');
@@ -31,14 +31,11 @@ function playGame() {
 }
 
 // onkeyup="checkKey(event)"
-// enter keycode
+// // enter keycode
 // function checkKey(e){
 //     let enterKey = 13;
 //     if (e.which == enterKey && guessBtn.style.display != "none"){
 //         evalGuess();
-//     }
-//     if (e.which == enterKey && nextBtn.style.display == "inline" && guessBtn.style.display == "none"){
-//         nextRiddle();
 //     }
 // }
 
@@ -68,13 +65,14 @@ function evalGuess() {
 
     if (playerGuess.toLowerCase().includes(matchRiddle.answer) || playerGuess.toLowerCase() === matchRiddle.answer2) {
         riddlesComplete++;
+        input.style.borderColor = "var(--green-emerald)";
         feedback.innerHTML = "You got it!";
         guessBtn.style.display = "none";
         skipBtn.style.display = "none";
-        nextBtn.style.display = "inline";
+        nextBtn.style.display = "inline";       
     } else {
         feedback.innerHTML = "Try again!";
-        // input.classList.toggle("apply-shake");
+        input.style.borderColor = "red";
         input.classList.add("shake");
         input.addEventListener("animationend", function() {
             input.classList.remove("shake");
@@ -93,6 +91,9 @@ function skipGame() {
     matchRiddle = riddles.pop();
     currentRiddle.textContent = matchRiddle.riddle;
     feedback.innerHTML = "";
+    input.style.borderColor = "black";
+    input.value = "";
+
 }
 
 function nextRiddle() {
@@ -102,6 +103,8 @@ function nextRiddle() {
     skipBtn.style.display = "inline";
     nextBtn.style.display = "none";
     feedback.innerHTML = "";
+    input.style.borderColor = "black";
+    input.value = "";
 }
 
 function resetGame() {

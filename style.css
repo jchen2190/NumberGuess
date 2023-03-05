@@ -1,6 +1,10 @@
+:root {
+    --green-emerald: #2D8F4E;
+    --teal: #008080;
+}
 body {
     box-sizing: border-box;
-    /* background-image: url("img/question-mark.jpg"); */
+    /* background-image: url("images/question-mark.jpg"); */
     /* background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -27,13 +31,21 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 20px auto;
+    border-radius: 5px;
+    text-align: center;
+    padding: 4px;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 button {
     cursor: pointer;
 }
 #guess-btn {
     display: none;
+    background-color: var(--teal);
+    border: var(--teal) solid 2px;
+    color: #fff;
 }
 #skip-btn {
     display: none;
@@ -54,8 +66,8 @@ button {
 @keyframes shake{
     0%{ transform: translateX(0) }
     20%{ transform: translateX(5px) }
-    40%{ transform: translateX(-5px); }
-    60%{ transform: translateX(5px); }
+    40%{ transform: translateX(-5px) }
+    60%{ transform: translateX(5px) }
     80%{ transform: translateX(-5px) }
-    100%{ transform: translateX(0px); }
+    100%{ transform: translateX(0px) }
   }
