@@ -21,24 +21,30 @@ body {
     flex: 3;
     /* backdrop-filter: blur(10px); */
 }
+/* .container-text {
+    height: 250px;
+    position: relative;
+} */
 h2 {
     display: block;
     justify-content: center;
     align-items: center;
 }
 #guessText {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
+    display: none;
+    bottom: 20px;
+    margin: 0 auto;
     border-radius: 5px;
     text-align: center;
-    padding: 4px;
+    max-width: 30%;
+    /* padding: 4px; */
     font-size: 1.2em;
     font-weight: bold;
+
 }
 button {
     cursor: pointer;
+    margin-top: 20px;
 }
 #guess-btn {
     display: none;

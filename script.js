@@ -19,27 +19,22 @@ const userInputs = document.getElementById('user-inputs');
 const guessAvg = document.getElementById('guess-avg');
 
 
-
 function playGame() {
     this.style.display = "none"; // hide the Play button
     input.style.display = "block"; 
     skipBtn.style.display = "inline";
     guessBtn.style.display = "inline";
     feedback.style.display = "inline-block";
-
-    if(currentRiddle.textContent == "") {
-        startGame();
-    }
+    startGame();
 }
 
-// onkeyup="checkKey(event)"
-// // enter keycode
-// function checkKey(e){
-//     let enterKey = 13;
-//     if (e.which == enterKey && guessBtn.style.display != "none"){
-//         evalGuess();
-//     }
-// }
+function checkKey(e){
+    if (e.key === "Enter" && guessBtn.style.display != "none"){
+        evalGuess();
+    } else if (e.key === "Enter" && nextBtn.style.display != "none"){
+        nextRiddle();
+    }
+}
 
 const riddlesCopy = [...riddles];
 let matchRiddle = "";
@@ -67,14 +62,16 @@ function evalGuess() {
 
     if (playerGuess.toLowerCase().includes(matchRiddle.answer) || playerGuess.toLowerCase() === matchRiddle.answer2) {
         riddlesComplete++;
-        input.style.borderColor = "var(--green-emerald)";
+        input.style.backgroundColor = "var(--green-emerald)";
+        input.style.color = "#fff"
         feedback.innerHTML = "You got it!";
         guessBtn.style.display = "none";
         skipBtn.style.display = "none";
         nextBtn.style.display = "inline";       
     } else {
         feedback.innerHTML = "Try again!";
-        input.style.borderColor = "red";
+        input.style.backgroundColor = "red";
+        input.style.color = "#fff";
         input.classList.add("shake");
         input.addEventListener("animationend", function() {
             input.classList.remove("shake");
@@ -85,15 +82,15 @@ function evalGuess() {
         feedback.innerHTML = "Congrats! You've finished all the riddles!"
         nextBtn.style.display = "none"
     }
-    
-
 }
+
 function skipGame() {
     riddles.unshift(matchRiddle);
     matchRiddle = riddles.pop();
     currentRiddle.textContent = matchRiddle.riddle;
     feedback.innerHTML = "";
-    input.style.borderColor = "black";
+    input.style.backgroundColor = "#fff";
+    input.style.color = "black";
     input.value = "";
     userInputs.innerHTML = "";
 
@@ -106,7 +103,8 @@ function nextRiddle() {
     skipBtn.style.display = "inline";
     nextBtn.style.display = "none";
     feedback.innerHTML = "";
-    input.style.borderColor = "black";
+    input.style.color = "black";
+    input.style.backgroundColor = "white";
     input.value = "";
     userInputs.innerHTML = "";
 }
