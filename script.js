@@ -50,13 +50,12 @@ function startGame() {
     matchRiddle = riddles.pop();
     currentRiddle.textContent = matchRiddle.riddle;
 }   
-let count = 1;
+let guessCount = 1;
 function evalGuess() {
     
     playerGuess = input.value;
-    userInputs.innerHTML = `<br> &nbsp;  ${count} ${input.value} ${userInputs.innerHTML}`;
-    count++;
-    console.log('guesses', guesses);
+    userInputs.innerHTML = `<br> &nbsp;  ${guessCount} ${input.value} ${userInputs.innerHTML}`;
+    guessCount++;
     console.log('matchriddle', matchRiddle);
 
     if (playerGuess.toLowerCase().includes(matchRiddle.answer) || playerGuess.toLowerCase() === matchRiddle.answer2) {
@@ -66,7 +65,7 @@ function evalGuess() {
         feedback.innerHTML = "You got it!";
         guessBtn.style.display = "none";
         skipBtn.style.display = "none";
-        nextBtn.style.display = "inline";       
+        nextBtn.style.display = "inline";
     } else {
         feedback.innerHTML = "Try again!";
         input.style.borderColor = "var(--red)";
@@ -88,11 +87,11 @@ function skipGame() {
     matchRiddle = riddles.pop();
     currentRiddle.textContent = matchRiddle.riddle;
     feedback.innerHTML = "";
-    // input.style.backgroundColor = "#fff";
+    input.style.borderColor = "black";
     // input.style.color = "black";
     input.value = "";
     userInputs.innerHTML = "";
-
+    guessCount = 1;
 }
 
 function nextRiddle() {
@@ -102,10 +101,11 @@ function nextRiddle() {
     skipBtn.style.display = "inline";
     nextBtn.style.display = "none";
     feedback.innerHTML = "";
-    input.style.color = "black";
-    input.style.backgroundColor = "white";
+    // input.style.color = "black";
+    input.style.borderColor = "black";
     input.value = "";
     userInputs.innerHTML = "";
+    guessCount = 1;
 }
 
 // function resetGame() {
