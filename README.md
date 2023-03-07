@@ -1,10 +1,13 @@
 # wordRiddle
 
 ## General Info
-This project is a riddle game that users have to deduct what the correct answer is from the riddle game. A feedback will remark if the player correct or wrong. A tally is made to keep track on how many riddles was guessed correctly and the average guesses the user took.
+This project is a riddle game that users have to deduct what the correct answer is from the riddle game. A feedback will remark if the player correct or wrong. User inputs are recorded in progression to keep track on the guesses made.
+
+User can use the enter key to "Guess" their input and go to the "Next" riddle.
+Skipping will place the current riddle to the back of the list.
 
 ## Technologies
-Project is created with Javascript
+Project is created with Javascript.
 
 ## Deployment
 Go to [https://jchen2190@github.io/wordRiddle](https://jchen2190.github.io/wordRiddle/)
