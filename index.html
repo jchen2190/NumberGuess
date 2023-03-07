@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <title>Word Riddles</title>
     <link href="style.css" rel="stylesheet">
     
@@ -11,9 +12,9 @@
     <div class="container">
         <div class="container-text">
             <h1>Word Riddles</h1>
-            <h2 id="riddle"></h2>
+            <h2 id="riddle">Click Play</h2>
             <h2 id="feedback"></h2>
-            <input id="guessText" type="text" placeholder="" onkeyup="checkKey(event)">
+            <input id="guessText" type="text" placeholder="" onkeyup="checkKey(event)" maxlength="12">
         </div>
         <button id="guess-btn" type="submit">Guess</button>
         <button id="skip-btn">Skip</button>
@@ -22,10 +23,10 @@
     </div>
     <div id="sidebar">
         <!-- <p>Guess Average: <span id="guess-avg">0</span></p> -->
-        <p><b>Your Guesses:</b><span id="user-inputs"></span></p>
+        <p><b>Your Guesses:</b><br><span id="user-inputs"></span></p>
     </div>
 
     <script src="riddles.js"></script>
-    <script src="script.js"></script> 
+    <script src="script.js"></script>
 </body>
 </html>

@@ -49,29 +49,28 @@ function startGame() {
     }
     matchRiddle = riddles.pop();
     currentRiddle.textContent = matchRiddle.riddle;
-    // console.log('matchRiddle', matchRiddle);
-    // console.log('riddles', riddles);
 }   
-
+let count = 1;
 function evalGuess() {
     
     playerGuess = input.value;
-    userInputs.innerHTML += `<br>` + `${input.value}`;
+    userInputs.innerHTML = `<br> &nbsp;  ${count} ${input.value} ${userInputs.innerHTML}`;
+    count++;
     console.log('guesses', guesses);
     console.log('matchriddle', matchRiddle);
 
     if (playerGuess.toLowerCase().includes(matchRiddle.answer) || playerGuess.toLowerCase() === matchRiddle.answer2) {
         riddlesComplete++;
-        input.style.backgroundColor = "var(--green-emerald)";
-        input.style.color = "#fff"
+        input.style.borderColor = "var(--green-emerald)";
+        // input.style.color = "#fff"
         feedback.innerHTML = "You got it!";
         guessBtn.style.display = "none";
         skipBtn.style.display = "none";
         nextBtn.style.display = "inline";       
     } else {
         feedback.innerHTML = "Try again!";
-        input.style.backgroundColor = "red";
-        input.style.color = "#fff";
+        input.style.borderColor = "var(--red)";
+        // input.style.color = "#fff";
         input.classList.add("shake");
         input.addEventListener("animationend", function() {
             input.classList.remove("shake");
@@ -89,8 +88,8 @@ function skipGame() {
     matchRiddle = riddles.pop();
     currentRiddle.textContent = matchRiddle.riddle;
     feedback.innerHTML = "";
-    input.style.backgroundColor = "#fff";
-    input.style.color = "black";
+    // input.style.backgroundColor = "#fff";
+    // input.style.color = "black";
     input.value = "";
     userInputs.innerHTML = "";
 
