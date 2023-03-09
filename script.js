@@ -50,9 +50,10 @@ function startGame() {
     matchRiddle = riddles.pop();
     currentRiddle.textContent = matchRiddle.riddle;
 }   
+
 let guessCount = 1;
+
 function evalGuess() {
-    
     playerGuess = input.value;
     userInputs.innerHTML = `<br> &nbsp;  ${guessCount} ${input.value} ${userInputs.innerHTML}`;
     guessCount++;
@@ -107,19 +108,3 @@ function nextRiddle() {
     userInputs.innerHTML = "";
     guessCount = 1;
 }
-
-// function resetGame() {
-//     playerGuess = 0;
-//     guesses = 7;
-//     input.value = 0;
-//     input.style.display = "none"; // show the GUESS button
-//     guessBtn.style.display = "none";
-//     playBtn.style.display = "inline-block";
-//     playBtn.textContent = "PLAY AGAIN";
-//     // update footer (Games Played and Guess Average)
-//     gamesPlayed++;
-//     guessAvg = totalGuesses / gamesPlayed;
-//     // output (Games Played and Guess Average) to footer
-//     totGamesSpan.textContent = gamesPlayed;
-//     guessAvgSpan.textContent = guessAvg.toFixed(2);
-// }
