@@ -1,5 +1,4 @@
 const riddles = [ 
-
     { riddle: "What has to be broken before you can use it?", answer: "egg" },
     { riddle: "I’m tall when I’m young, and I’m short when I’m old. What am I?", answer: "candle" },
     { riddle: "What is full of holes but still holds water?", answer: "sponge" },

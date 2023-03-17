@@ -2,6 +2,7 @@ let playerGuess = ""
 let riddlesComplete = 0;
 let gamesPlayed = 1
 let guesses = 0;
+let guessCount = 1;
 
 const guessBtn = document.getElementById('guess-btn');
 const skipBtn = document.getElementById('skip-btn');
@@ -18,9 +19,8 @@ const feedback = document.getElementById('feedback');
 const userInputs = document.getElementById('user-inputs');
 const guessAvg = document.getElementById('guess-avg');
 
-
 function playGame() {
-    this.style.display = "none"; // hide the Play button
+    this.style.display = "none";
     input.style.display = "block"; 
     skipBtn.style.display = "inline";
     guessBtn.style.display = "inline";
@@ -51,8 +51,6 @@ function startGame() {
     currentRiddle.textContent = matchRiddle.riddle;
 }   
 
-let guessCount = 1;
-
 function evalGuess() {
     playerGuess = input.value;
     userInputs.innerHTML = `<br> &nbsp;  ${guessCount} ${input.value} ${userInputs.innerHTML}`;
@@ -62,7 +60,6 @@ function evalGuess() {
     if (playerGuess.toLowerCase().includes(matchRiddle.answer) || playerGuess.toLowerCase() === matchRiddle.answer2) {
         riddlesComplete++;
         input.style.borderColor = "var(--green-emerald)";
-        // input.style.color = "#fff"
         feedback.innerHTML = "You got it!";
         guessBtn.style.display = "none";
         skipBtn.style.display = "none";
@@ -70,13 +67,12 @@ function evalGuess() {
     } else {
         feedback.innerHTML = "Try again!";
         input.style.borderColor = "var(--red)";
-        // input.style.color = "#fff";
         input.classList.add("shake");
         input.addEventListener("animationend", function() {
             input.classList.remove("shake");
         })
-
     }
+
     if(riddles == "") {
         feedback.innerHTML = "Congrats! You've finished all the riddles!"
         nextBtn.style.display = "none"
@@ -89,7 +85,6 @@ function skipGame() {
     currentRiddle.textContent = matchRiddle.riddle;
     feedback.innerHTML = "";
     input.style.borderColor = "black";
-    // input.style.color = "black";
     input.value = "";
     userInputs.innerHTML = "";
     guessCount = 1;
@@ -102,7 +97,6 @@ function nextRiddle() {
     skipBtn.style.display = "inline";
     nextBtn.style.display = "none";
     feedback.innerHTML = "";
-    // input.style.color = "black";
     input.style.borderColor = "black";
     input.value = "";
     userInputs.innerHTML = "";
